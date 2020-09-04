@@ -16,4 +16,8 @@ class Registed extends Model
     {
             return $this->hasOne(Form::class);
     }
+    public function student()
+    {
+           return $this->hasOne(Student::class);
+    }
 }
