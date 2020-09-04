@@ -12,4 +12,8 @@ class Student extends Model
    {
     return $this->belongsTo('App\Registed','registeds_id');
    }
+   public function country()
+   {
+       return $this->belongsTo(Country::class);
+   }
 }
