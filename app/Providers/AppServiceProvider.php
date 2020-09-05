@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Country;
 use App\Registed;
 use App\Score;
 use App\Survey;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
 
@@ -40,8 +42,9 @@ class AppServiceProvider extends ServiceProvider
             $admin = Session::get('admin');
             $qualified = Score::where('score','<=',350)->get();
             $survey = Survey::with(['labels','values'])->get()->all();
-            
-            $view->with(compact('links', 'admin','applicant','qualified','survey'));
+            $countries  = Country::all();
+            $date = Carbon::now();
+            $view->with(compact('links', 'admin','applicant','qualified','survey','countries','date'));
         });
     }
 }
