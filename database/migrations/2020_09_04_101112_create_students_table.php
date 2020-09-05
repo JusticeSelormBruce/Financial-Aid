@@ -17,10 +17,10 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->string('lastname');
             $table->string('firstname');
-            $table->string('middlename');
+            $table->string('middlename')->nullable();
             $table->string('dob');
             $table->string('placeofbirth');
-            $table->string('ssn');
+            $table->string('ssn')->nullable();
             $table->string('entry');
             $table->string('current');
             $table->string('studymode');
@@ -29,7 +29,7 @@ class CreateStudentsTable extends Migration
             $table->string('date1');
             $table->string('guardian_name');
             $table->integer('guardian_nationality');
-            $table->text('occupation_rank');
+            $table->text('occupation_rank')->nullable();
             $table->text('guardian_address_telephone');
             $table->text('guardian_telephone');
             $table->string('date2');
