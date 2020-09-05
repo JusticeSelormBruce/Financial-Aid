@@ -1,8 +1,10 @@
 @extends('layouts.applicant')
 @section('render')
 
+
 <div class="container-fluid">
     <div class="jumbotron">
+        @include('applicant.student.form')
         @if ($score  == null)
         <form action="/preview" method="POST">
             @csrf
