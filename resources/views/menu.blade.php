@@ -58,7 +58,7 @@
                 <div class="card-body" style="background-color: #3c4858">
                     <div class=" row py-5">
                         <div class="mx-auto">
-                            <a href="/incoming-applications" class="lead">Qualified Applicatioins</a>
+                            <a href="/incoming-applications" class="lead">Qualified Applications</a>
                         </div>
                     </div>
 

@@ -33,6 +33,7 @@ class CreateStudentsTable extends Migration
             $table->text('guardian_address_telephone');
             $table->text('guardian_telephone');
             $table->string('date2');
+            $table->text('avatar');
             $table->unsignedBigInteger('registeds_id');
             $table->foreign('registeds_id')->references('id')->on('registeds')->onDelete('cascade');
             $table->unsignedBigInteger('country_id');

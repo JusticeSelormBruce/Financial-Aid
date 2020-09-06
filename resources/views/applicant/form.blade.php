@@ -3,9 +3,10 @@
 
 
 <div class="container-fluid">
+   
     <div class="jumbotron">
-        @include('applicant.student.form')
-        @if ($score  == null)
+        @include('common.alert')
+        @if ($student == null)
         <form action="/preview" method="POST">
             @csrf
            @include('admin.questionnaire.form')

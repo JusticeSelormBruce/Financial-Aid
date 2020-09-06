@@ -30,8 +30,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('*', function ($view) {
+
             $value = Session::get('applicant');
             $result = Registed::whereId($value)->get()->all();
+    
             if($result == null){
                 $applicant = null;
             }else{
@@ -41,6 +43,7 @@ class AppServiceProvider extends ServiceProvider
             $links = Session::get('routes');
             $admin = Session::get('admin');
             $qualified = Score::where('score','<=',350)->get();
+            // dd($qualified);
             $survey = Survey::with(['labels','values'])->get()->all();
             $countries  = Country::all();
             $date = Carbon::now();

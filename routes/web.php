@@ -11,6 +11,10 @@
 |
 */
 
+use App\Http\Controllers\ApplicantController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -66,4 +70,6 @@ Route::post('/admin/load-funds','AdminController@loadFunds');
 Route::get('admin/creadit-student-account-index','AdminController@creditStudentAccountIndex');
 Route::post('admin/credit-applicant-aacount','AdminController@CreditApplicantAccount');
 Route::post('/preview','ApplicantController@preview');
+Route::get('/student-form','ApplicantController@studentForm');
+Route::post('/save-student-details','ApplicantController@storeStudentDetails');
 //

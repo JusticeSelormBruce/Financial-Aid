@@ -2,9 +2,9 @@
 @extends('layouts.applicant')
 @section('render')
 
-<div class="container-fluid pt-5">
-<div class="jumbotron">
-
+<div class="container-fluid pt-2">
+    @include('applicant.student.show')
+<div class="jumbotron pt-3">
     <table  id ="table_id"class="table-striped table">
 
             <thead>

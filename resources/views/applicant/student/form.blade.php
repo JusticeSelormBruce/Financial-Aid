@@ -1,4 +1,33 @@
+<style>
+    .avatar {
+        height: 100px !important;
+        width: 100px !important;
+    }
+</style>
 <div class="container">
+    <div class="row">
+        <div class="col-4 pt-3"><h2>
+           <b> Koforidua Technical University (KTU)
+            <br>
+            Financial Aid Board (FAB)</b>
+        </h2></div>
+        <div class="col-4">
+            <div class="row pb-3">
+                <div class="mx-auto"><img src="{{asset('icons/logo-round.png')}}" alt=""style="width:150px!important; height:150px!important"></div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="row">
+                <div class="ml-auto mx-3">
+                    <img class="avatar img-raised img-fluid" id="value"/>
+                    <br>
+                    <input type="file" name="avatar" class="small pt-2" required  onchange="document.getElementById('value').src = window.URL.createObjectURL(this.files[0])">
+                            <small class="text-danger">{{$errors->first('avatar')}}</small>
+                </div>
+            </div>
+
+        </div>
+    </div>
     
 <div class="form-group input-group-sm">
     <div class="row">
@@ -70,7 +99,7 @@
     <div class="row py-2">
         <div class="col-4"><input type="text" placeholder="Gaurdian Occupatioin and Rank" name="occupation_rank" class="form-control" value="{{old('occupation_rank')}}" required></div>
         <div class="col-4"><input type="text" placeholder="Guardian Address" name="guardian_address_telephone" class="form-control" value="{{old('guardian_address_telephone')}}" required></div>
-        <div class="col-4"><input type="text" placeholder="Guardian  Telephone" name="middlename" class="form-control" value="{{old('middlename')}}" ></div>
+        <div class="col-4"><input type="text" placeholder="Guardian  Telephone" name="guardian_telephone" class="form-control" value="{{old('guardian_telephone')}}" ></div>
     </div>
 </div>
 </div>

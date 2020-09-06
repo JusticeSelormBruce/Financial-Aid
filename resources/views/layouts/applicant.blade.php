@@ -98,7 +98,7 @@
                     <div class="form-inline mx-4">
                         <span></span><img src="{{asset('icons/dot.PNG')}}" alt=""
                                           style="border-radius: 100px!important; width: 20px!important; height: 20px!important;">
-                        <span class="mx-2"></span><a href="/application-check-index"
+                        <span class="mx-2"></span><a href="/student-form"
                                                      style="color: white!important; text-decoration: none!important;">New Application</a>
                     </div>
 

@@ -8,10 +8,12 @@ use App\Application;
 use App\Registed;
 use App\Score;
 use App\Settings;
+use App\Student;
 use App\Temp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class ApplicantController extends Controller
 {
@@ -94,9 +96,11 @@ class ApplicantController extends Controller
     {
         $applicant_id = Session::get('applicant');
         $myapplication = Application::with('student')->where('registeds_id', $applicant_id)->get()->all();
+        $student =  Student::with('registed','country')->where('registeds_id', $applicant_id)->get()->first();
+        
         $myscore = Score::where('registed_id', $applicant_id)->get(['score'])->first();
 
-        return view('applicant.my_application', compact('myapplication', 'myscore'));
+        return view('applicant.my_application', compact('myapplication', 'myscore', 'student'));
     }
 
     public function myAccount()
@@ -104,5 +108,32 @@ class ApplicantController extends Controller
         $applicant_id = Session::get('applicant');
         $account = Account::where('registed_id', $applicant_id)->get();
         return view('applicant.account', compact('account'));
+    }
+
+    public function studentForm()
+    {
+        $applicant_id = Session::get('applicant');
+        $student =  Student::with('registed','country')->where('registeds_id', $applicant_id)->get()->first();
+    
+        return view('applicant.student.create',compact('student'));
+    }
+
+    public function storeStudentDetails(Request $request)
+    {
+
+        if ($request->hasFile('avatar')) {
+            request()->validate(
+                [
+                    'avatar' => "required|file|max:2000|mimes:jpeg,png"
+                ]
+            );
+        }
+        $applicant_id = Session::get('applicant');
+        $data = $request->except('_token') + array('date2' => $request['date1'], 'registeds_id' => $applicant_id);
+        $path =    Storage::putFile('Attachments', $data['avatar']);
+        $path = $data['avatar']->storeAs("public", $path);
+        $data['avatar'] = $path;
+        Student::create($data);
+        return redirect('application-check-index')->with('msg', 'Submited Successfully, Kindly feel in the  Poverty Survey Questionanire');
     }
 }

@@ -13,6 +13,7 @@ use App\Imports\RegistedImport;
 use App\Registed;
 use App\Score;
 use App\Settings;
+use App\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
@@ -114,7 +115,8 @@ class AdminController extends Controller
     {
 
         $scores = Score::with('student')->orderBy('score')->get();
-        return view('admin.application.index', compact('scores'));
+        $students =  Student::all();
+        return view('admin.application.index', compact('scores','students'));
     }
 
     public function Accounts()

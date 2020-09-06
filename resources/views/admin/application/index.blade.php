@@ -31,8 +31,8 @@
                     <th>Program</th>
                     <th>Level</th>
                     <th>Porverty Survey Score</th>
-                  
                     <th>Cgpa</th>
+                    <th>Applicant Details</th>
                     <th>Application Date & Time</th>
                 </tr>
             </thead>
@@ -49,6 +49,13 @@
             <td>{{$item->student->level}}</td>
             <td>{{ceil(((100) - ($item->score/ 700)*100))}}%</td>
             <td>{{$item->student->cgpa}}</td>
+            <td >
+              
+                @include('admin.application.more')
+              
+            </td>
+            
+              
             <td>{{$item->created_at}}</td>
            
         </tr>
